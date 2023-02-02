@@ -21,13 +21,13 @@ app.use(
     app.post("/split", async (req, res) => {
        const file = req.files.file
        const path = `./files/${file.md5}`
-         await  file.mv(path)
+        await file.mv(path)
         const py = spawnSync('python3', ['split.py',path ]);
   
         console.log(py.stdout.toString());
         console.error(py.stderr.toString());
 
-        fs.unlinkSync(path)
+        //fs.unlinkSync(path)
 
         const vocalsPath = `${req.protocol}://${req.hostname}/audios/${file.md5}/vocals.wav`;
         const instrumentalPath = `${req.protocol}://${req.hostname}/audios/${file.md5}/instrumental.wav`;
