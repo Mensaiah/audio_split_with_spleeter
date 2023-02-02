@@ -1,0 +1,8 @@
+version: '2'
+services:
+    web:
+        build: ./
+        ports: 
+            - "1200:1200"
+        volumes:
+            - .:/app
